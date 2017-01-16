@@ -47,6 +47,7 @@ def LaunchWebBrowser(browser, driver, target, data, subdirectory, TCID, TSID, DS
 				desired_caps['platformName'] = 'Android'
 				desired_caps['platformVersion'] = '6.0'
 				desired_caps['deviceName'] = 'Moto'
+				desired_caps['newCommandTimeout'] = '600'
 				print "hai1"
 				desired_caps['app'] = '/Users/macmini/dev/cureatr_android/messenger-android/Cureatr/build/outputs/apk/Cureatr-dev-debug.apk'
 				driver = webdriver.Remote('http://192.168.73.1:4725/wd/hub', desired_caps)
@@ -60,6 +61,7 @@ def LaunchWebBrowser(browser, driver, target, data, subdirectory, TCID, TSID, DS
 				desired_caps['platformName'] = 'Android'
 				desired_caps['platformVersion'] = '5.1'
 				desired_caps['deviceName'] = 'Moto'
+				desired_caps['newCommandTimeout'] = '600'
 				print "hai2"
 				desired_caps['app'] = '/Users/macmini/dev/cureatr_android/messenger-android/Cureatr/build/outputs/apk/Cureatr-dev-debug.apk'
 				driver = webdriver.Remote('http://192.168.73.1:4726/wd/hub', desired_caps)
@@ -82,7 +84,7 @@ def LaunchWebBrowser(browser, driver, target, data, subdirectory, TCID, TSID, DS
 			else:
 				desired_caps = {}
 				desired_caps['platformName'] = 'Android'
-				desired_caps['platformVersion'] = '4.4'
+				desired_caps['platformVersion'] = '5.1'
 				desired_caps['deviceName'] = 'Moto'
 				desired_caps['app'] = '/Users/macmini/dev/CureatrAndroidWorkSpace/APK/CureatrPlay.apk'
 				driver = webdriver.Remote('http://192.168.73.1:4726/wd/hub', desired_caps)
@@ -96,7 +98,8 @@ def LaunchWebBrowser(browser, driver, target, data, subdirectory, TCID, TSID, DS
 				desired_caps['platformName'] = 'Android'
 				desired_caps['platformVersion'] = '6.0'
 				desired_caps['deviceName'] = 'Moto'
-				desired_caps['app'] = '/Users/macmini/dev/CureatrAndroidWorkSpace/APK/CureatrPlay.apk'
+				desired_caps['newCommandTimeout'] = '600'
+				desired_caps['app'] = '/Users/macmini/dev/cureatr_android/messenger-android/Cureatr/build/outputs/apk/Cureatr-dev-debug.apk'
 				driver = webdriver.Remote('http://192.168.73.1:4725/wd/hub', desired_caps)
 				time.sleep(10)
 				element=driver.find_element_by_xpath("//android.widget.CheckedTextView[@text='DaVita']")
@@ -105,9 +108,10 @@ def LaunchWebBrowser(browser, driver, target, data, subdirectory, TCID, TSID, DS
 			else:
 				desired_caps = {}
 				desired_caps['platformName'] = 'Android'
-				desired_caps['platformVersion'] = '4.4'
+				desired_caps['platformVersion'] = '5.1'
 				desired_caps['deviceName'] = 'Moto'
-				desired_caps['app'] = '/Users/macmini/dev/CureatrAndroidWorkSpace/APK/CureatrPlay.apk'
+				desired_caps['newCommandTimeout'] = '600'
+				desired_caps['app'] = '/Users/macmini/dev/cureatr_android/messenger-android/Cureatr/build/outputs/apk/Cureatr-dev-debug.apk'
 				driver = webdriver.Remote('http://192.168.73.1:4726/wd/hub', desired_caps)
 				time.sleep(10)
 				element=driver.find_element_by_xpath("//android.widget.CheckedTextView[@text='CAIPA']")
@@ -373,6 +377,32 @@ def Hidekeyboard(browser, driver, target, data, subdirectory, TCID, TSID, DSID, 
 		logger.info("Exception @ CloseWebApp"+str(err))
 		ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
 		return "FAIL", ""
+
+
+def SwipeRight(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
+	try:
+		print "sravani"
+		element=driver.find_element_by_xpath(getattr(Config, str(target)))
+		elY = element.getLocation().getY()
+		print elY
+		elX = element.getLocation().getX()
+		print elX
+		elX1 = element.getLocation().getX()
+		print elX1
+		elY1 = element.getLocation().getY()
+		print elY1
+		driver.swipe(elX, elY, elX1, elY1, 200)
+		return "PASS", ""
+	except Exception as err:
+		logger.info("Exception @ CloseWebApp"+str(err))
+		ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
+		return "FAIL", ""
+
+
+
+
+
+
 
 """
 def LANDSCAPE(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):

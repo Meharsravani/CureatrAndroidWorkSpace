@@ -44,6 +44,7 @@ threadsubject="//android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/
 #latestmsg="//android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[2]/android.widget.LinearLayout[2]/android.widget.TextView[1]"
 #latestcontactimage="//android.widget.FrameLayout[1]/android.widget.RelativeLayout[2]/android.widget.ImageView[1]"
 latestunreadmsgscount="//android.widget.FrameLayout[1]/android.widget.RelativeLayout[2]/android.widget.LinearLayout[1]/android.widget.TextView[1]"
+Archieved_label="//android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]"
 #latestunreadmsg
 
 #***Institution screen>>signin screen>>dashboard screen***
@@ -63,7 +64,10 @@ messages_tab_text="//android.support.v7.app.ActionBar.Tab[1]/android.widget.Text
 workflow_tab_text="//android.support.v7.app.ActionBar.Tab[2]/android.widget.TextView[1]"
 Conversation_text="//android.widget.FrameLayout[1]/android.widget.TextView[1]"
 msg_content="//android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]"
+sendmsg="//android.widget.ListView[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]"
+reply_msg="//android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]"
 conv_start_time="//android.widget.FrameLayout[2]/android.widget.TextView[1]"
+leave_thread_msg="//android.widget.TextView[@resource-id='com.cureatr.messenger.dev:id/leaveThreadMessage']"
 patient_name="//android.widget.RelativeLayout[2]/android.widget.TextView[1]"
 workflow_progress_text_1="//android.widget.RelativeLayout[2]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]"
 #workflow_progress_text_n="//android.widget.RelativeLayout[n+1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]"
@@ -293,10 +297,15 @@ profilename="//android.widget.TextView[@resource-id='com.cureatr.messenger.dev:i
 profileemailid="//android.widget.TextView[@resource-id='com.cureatr.messenger.dev:id/email']"
 
 #***Institution screen>>signin screen>>dashboard screen>>settings screen>>recipientgroups 
+group_name_label="//android.widget.TextView[@resource-id='com.cureatr.messenger.dev:id/group_edit_name_label']"
+group_name_input="//android.widget.ScrollView[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.EditText[1]"
+group_add_symbol="//android.widget.LinearLayout[2]/android.view.ViewGroup[1]/android.widget.LinearLayout[1]/android.widget.ImageView[1]"
 addbutton="//android.widget.TextView[@resource-id='com.cureatr.messenger.dev:id/menu_add']"
 nogroupstext="//android.widget.TextView[@resource-id='com.cureatr.messenger.dev:id/emptyTitle']"
 creategroupstext="//android.widget.RelativeLayout[1]/android.widget.TextView[2]"
-
+recipient_group_save_btn="//android.view.ViewGroup[1]/android.support.v7.widget.LinearLayoutCompat[1]/android.widget.TextView[1]"
+recipient_profile="//android.view.ViewGroup[1]/android.widget.LinearLayout[1]/android.widget.ImageView[1]"
+add_delete_recipient="//android.widget.LinearLayout[2]/android.view.ViewGroup[1]/android.widget.LinearLayout[2]/android.widget.ImageView[1]"
 #***Institution screen>>signin screen>>dashboard screen>>settings screen>>alertsound screen***
 alertsoundtext="//android.widget.TextView[@resource-id='android:id/alertTitle']"
 listinalert="//android.widget.FrameLayout[@resource-id='android:id/contentPanel']"
@@ -360,11 +369,12 @@ backbuttonincompose="//android.widget.ImageButton[1]"
 cureatr_screen_header="//android.view.ViewGroup[1]/android.widget.TextView[1]"
 Tolabel="//android.widget.TextView[@resource-id='com.cureatr.messenger.dev:id/newThreadRecipientsLabel']"
 Tofield="//android.widget.MultiAutoCompleteTextView[@resource-id='com.cureatr.messenger.dev:id/newThreadRecipientsInput']"
+View_profile_link="//android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.TextView[1]"
+remove_conv_link="//android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.TextView[2]"
 Tofieldcloseicon="//android.widget.Button[@resource-id='com.cureatr.messenger.dev:id/newThreadDirectoryButton']"
 patientlabel="//android.widget.TextView[@resource-id='com.cureatr.messenger.dev:id/newThreadPatientLabel']"
 patientfield="//android.widget.MultiAutoCompleteTextView[@resource-id='com.cureatr.messenger.dev:id/newThreadPatientCompletionView']"
 workflowlabel="//android.widget.TextView[@resource-id='com.cureatr.messenger.dev:id/newThreadWorkflowLabel']"
-workflowfield="//android.widget.TextView[@resource-id='com.cureatr.messenger.dev:id/newThreadWorkflowButton']"
 subjectlabel="//android.widget.TextView[@resource-id='com.cureatr.messenger.dev:id/newThreadSubjectLabel']"
 subjectfield="//android.widget.EditText[@resource-id='com.cureatr.messenger.dev:id/newThreadSubjectInput']"
 msgtextbox="//android.widget.EditText[@resource-id='com.cureatr.messenger.dev:id/composerMessageEditText']"
