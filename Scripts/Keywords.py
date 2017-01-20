@@ -398,13 +398,85 @@ def SwipeRight(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Co
 		ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
 		return "FAIL", ""
 
+def verifySignIn(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
+	try:
+		print "ok"
+		if Correct_Data=="Y":
+			element1 = driver.find_element_by_xpath("//android.widget.TextView[@resource-id='com.cureatr.messenger.dev:id/menu_settings']").is_displayed()
+			print"one"
+			print element1
+			if str(element1)=="True": 	
+				return "PASS", ""
+			else:
+				ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
+				return "FAIL", ""
+		else:
+			print"two"
+			element2 = driver.find_element_by_xpath("//android.widget.Button[@resource-id='com.cureatr.messenger.dev:id/account_forgot_password_button']").is_displayed()
+			return "PASS", ""
+	except Exception as err:
+		print "hii"
+		logger.info("Exception @ verifySignIn"+str(err))
+		ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
+		return "FAIL", ""
 
+def verifyErrorMsg(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
+	try:
+		print "haiiii"
+		if data!="":
+			element = driver.find_element_by_xpath(getattr(Config, str(target))).text
+			print element
+			element1 = driver.find_element_by_xpath("//android.widget.Button[@resource-id='android:id/button1']").click()
+			if data in str(element):
+				return "PASS", ""
+			else:
+				print "hello"
+				ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
+				return "FAIL", ""
+		else:
+			return "PASS", ""
+	except Exception as err:
+		logger.info("Exception @ verifyErrorMsg"+str(err))
+		ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
+		return "FAIL", ""
 
-
-
-
+def verifyFirstTimeSignIn(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
+	try:
+		if Correct_Data=="Y":
+			print "jjj"
+			element1 = driver.find_element_by_xpath("//*[@resource-id='com.cureatr.messenger.dev:id/current_password']").is_displayed()
+			if element1==True:
+				return "PASS", ""
+			else:
+				ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
+				return "FAIL", ""
+		else:
+			time.sleep(5)
+			element2 = driver.find_element_by_xpath("//android.widget.Button[@resource-id='com.cureatr.messenger.dev:id/account_forgot_password_button']").is_displayed()
+			if element2==True:
+				return "PASS", ""
+			else:
+				ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
+				return "FAIL", ""
+	except Exception as err:
+		logger.info("Exception @ verifyFirstTimeSignIn"+str(err))
+		ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
+		return "FAIL", ""
 
 """
+def verifySignOut(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
+	try:
+		element1 = driver.find_element_by_xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]").is_displayed()
+		if element1==True:
+			return "PASS", ""
+		else:
+			ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
+			return "FAIL", ""
+	except Exception as err:
+		logger.info("Exception @ verifySignOut"+str(err))
+		ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
+		return "FAIL", ""
+
 def LANDSCAPE(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
 	for i in range(21):
 		try:
@@ -457,7 +529,7 @@ def AttachFile(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Co
 		if browser=="FF" or browser=="Chrome":
 			data=FileAttachmentsDir+str(data)
 		else:
-			data=IEFileAttachmentsDir+"\\"+str(data)
+			data=IEFileAttachmentsDir+""+str(data)
 		if browser=="FF":
 			if str(target)=="ChangePhoto":
 				element=driver.find_element_by_xpath(getattr(Config, str(target)))
@@ -944,22 +1016,6 @@ def verifyTextcss(browser, driver, target, data, subdirectory, TCID, TSID, DSID,
 		logger.info("Exception @ verifyTextcss"+str(err))
 		return "FAIL", ""
 
-def verifyErrorMsg(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
-	try:
-		if data!="":
-			ui.WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, getattr(Config, str(target)))))
-			element = driver.find_element_by_xpath(getattr(Config, str(target))).text
-			if data in str(element):
-				return "PASS", ""
-			else:
-				ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
-				return "FAIL", ""
-		else:
-			return "PASS", ""
-	except Exception as err:
-		logger.info("Exception @ verifyErrorMsg"+str(err))
-		ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
-		return "FAIL", ""
 		
 def verifyTextContains(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
 	for i in range(6):
@@ -1145,28 +1201,7 @@ def verifyMuteIconVissibility(browser, driver, target, data, subdirectory, TCID,
 		ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
 		return "FAIL", ""
 		
-def verifySignIn(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
-	try:
-		if Correct_Data=="Y":
-			element1 = driver.find_element_by_xpath(getattr(Config, "InboxLink")).is_displayed()
-			element2 = driver.find_element_by_xpath(getattr(Config, "ContactsLink")).is_displayed()
-			if element1==True and element2==True:
-				return "PASS", "YES"
-			else:
-				ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
-				return "FAIL", "NO"
-		else:
-			element1 = driver.find_element_by_xpath(getattr(Config, "WelcomeMsg")).is_displayed()
-			element2 = driver.find_element_by_xpath(getattr(Config, "GetSupportLink")).is_displayed()
-			if element1==True and element2==True:
-				return "PASS", "NO"
-			else:
-				ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
-				return "FAIL", "NO"
-	except Exception as err:
-		logger.info("Exception @ verifySignIn"+str(err))
-		ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
-		return "FAIL", "NO"
+
 
 def verifyCPDailog(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
 	try:
@@ -1187,45 +1222,7 @@ def verifyCPDailog(browser, driver, target, data, subdirectory, TCID, TSID, DSID
 				continue
 	except Exception as err:
 		return "PASS", ""
-
-def verifySignOut(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
-	try:
-		element1 = driver.find_element_by_xpath(getattr(Config, "WelcomeMsg")).is_displayed()
-		element2 = driver.find_element_by_xpath(getattr(Config, "GetSupportLink")).is_displayed()
-		if element1==True and element2==True:
-			return "PASS", "YES"
-		else:
-			ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
-			return "FAIL", "NO"
-	except Exception as err:
-		logger.info("Exception @ verifySignOut"+str(err))
-		ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
-		return "FAIL", "NO"
 		
-def verifyFirstTimeSignIn(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
-	try:
-		if Correct_Data=="Y":
-			element1 = driver.find_element_by_xpath(getattr(Config, "NewPasswordLabel")).is_displayed()
-			element2 = driver.find_element_by_xpath(getattr(Config, "ReTypePasswordLabel")).is_displayed()
-			if element1==True and element2==True:
-				return "PASS", "YES"
-			else:
-				ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
-				return "FAIL", "NO"
-		else:
-			time.sleep(5)
-			element1 = driver.find_element_by_xpath(getattr(Config, "WelcomeMsg")).is_displayed()
-			element2 = driver.find_element_by_xpath(getattr(Config, "GetSupportLink")).is_displayed()
-			if element1==True and element2==True:
-				return "PASS", "NO"
-			else:
-				ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
-				return "FAIL", "NO"
-	except Exception as err:
-		logger.info("Exception @ verifyFirstTimeSignIn"+str(err))
-		ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
-		return "FAIL", "NO"
-	
 def verifyChangePassword(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
 	try:
 		if data=="Y":

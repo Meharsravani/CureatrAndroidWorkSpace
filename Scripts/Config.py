@@ -8,17 +8,20 @@ verifyTitle="Cureatr Messenger"
 
 #***Institution screen***
 cureatrlogo="//android.widget.ImageView[@resource-id='com.cureatr.messenger.dev:id/startup_logo']"
+institution_label="//android.widget.TextView[@resource-id='com.cureatr.messenger.dev:id/institutions_instruction_label']"
 searchinstitution="//android.widget.EditText[@resource-id='com.cureatr.messenger.dev:id/institutions_search_field']"
+need_assistance_btn="//android.widget.Button[@resource-id='com.cureatr.messenger.dev:id/institutions_assistance_button']"
 selectedinstitution="//android.widget.CheckedTextView[@resource-id='android:id/text1']"
 institutiontoast="//android.widget.Button[@resource-id='com.cureatr.messenger.dev:id/missing_institution_button']"
 
 #***Institution screen>>signin screen***
+sign_in_screen="//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.LinearLayout[1]"
 Signinbackbutton="//android.widget.ImageButton[@resource-id='com.cureatr.messenger.dev:id/startup_back_button']"
-institutioninsigninscreen="//android.widget.TextView[@resource-id='com.cureatr.messenger.dev:id/institution_name_view']"
+institutioninsigninscreen="//android.widget.TextView[@resource-id='com.cureatr.messenger.dev:id/account_sign_in_notice_label']"
 emailid="//android.widget.EditText[@resource-id='com.cureatr.messenger.dev:id/sign_in_email_field']"
 password="//android.widget.EditText[@resource-id='com.cureatr.messenger.dev:id/sign_in_password_field']"
 signinbutton="//android.widget.LinearLayout[1]/android.widget.Button[1]"
-Forgotpasswordlink="//android.widget.Button[@resource-id='com.cureatr.messenger.dev:id/forgot_password_button']"
+Forgotpasswordlink="//android.widget.Button[@resource-id='com.cureatr.messenger.dev:id/account_forgot_password_button']"
 ortext="//android.widget.TextView[@resource-id='com.cureatr.messenger.dev:id/divider_view']"
 createnewaccountlink="//android.widget.Button[@resource-id='com.cureatr.messenger.dev:id/account_toggle_button']"
 #app_tour screen
@@ -44,12 +47,12 @@ threadsubject="//android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/
 #latestmsg="//android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[2]/android.widget.LinearLayout[2]/android.widget.TextView[1]"
 #latestcontactimage="//android.widget.FrameLayout[1]/android.widget.RelativeLayout[2]/android.widget.ImageView[1]"
 latestunreadmsgscount="//android.widget.FrameLayout[1]/android.widget.RelativeLayout[2]/android.widget.LinearLayout[1]/android.widget.TextView[1]"
-Archieved_label="//android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]"
 #latestunreadmsg
 
 #***Institution screen>>signin screen>>dashboard screen***
 listofmsgs="//android.widget.FrameLayout[@resource-id='com.cureatr.messenger.dev:id/fragment_container']"
 latestmsg="//android.support.v7.widget.RecyclerView[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]"
+existing_msg="//android.support.v7.widget.RecyclerView[1]/android.widget.FrameLayout[2]/android.widget.RelativeLayout[1]"
 latestcontactname="//android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.TextView[1]"
 latestcontactimage="//android.support.v7.widget.RecyclerView[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.ImageView[1]"
 latestsubjectmsg="//android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.TextView[1]"
@@ -73,6 +76,7 @@ workflow_progress_text_1="//android.widget.RelativeLayout[2]/android.widget.Fram
 #workflow_progress_text_n="//android.widget.RelativeLayout[n+1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]"
 sent_time="//android.widget.RelativeLayout[4]/android.widget.LinearLayout[1]/android.widget.TextView[1]"
 readby_count_text="//android.widget.RelativeLayout[4]/android.widget.LinearLayout[1]/android.widget.TextView[2]"
+unread_text="//android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.TextView[2]"
 conv_about_patient_text="//android.widget.ListView[1]/android.widget.LinearLayout[1]/android.widget.TextView[1]"
 view_patient_btn="//android.widget.ListView[1]/android.widget.LinearLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]"
 enter_msg="//android.widget.EditText[1]"
@@ -307,7 +311,7 @@ recipient_group_save_btn="//android.view.ViewGroup[1]/android.support.v7.widget.
 recipient_profile="//android.view.ViewGroup[1]/android.widget.LinearLayout[1]/android.widget.ImageView[1]"
 add_delete_recipient="//android.widget.LinearLayout[2]/android.view.ViewGroup[1]/android.widget.LinearLayout[2]/android.widget.ImageView[1]"
 #***Institution screen>>signin screen>>dashboard screen>>settings screen>>alertsound screen***
-alertsoundtext="//android.widget.TextView[@resource-id='android:id/alertTitle']"
+#alertsoundtext="//android.widget.TextView[@resource-id='android:id/alertTitle']"(popupheader)
 listinalert="//android.widget.FrameLayout[@resource-id='android:id/contentPanel']"
 list1="//android.widget.ListView[1]/android.widget.CheckedTextView[1]"
 listn="//android.widget.ListView[1]/android.widget.CheckedTextView[n]"
