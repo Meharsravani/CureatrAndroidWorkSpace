@@ -28,6 +28,8 @@ createnewaccountlink="//android.widget.Button[@resource-id='com.cureatr.messenge
 tourscreen1="//android.widget.RelativeLayout[1]/android.widget.RelativeLayout[1]"
 tourscreenimage1="//android.widget.RelativeLayout[1]/android.widget.ImageView[1]"
 pageindicator1="//android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]"
+hippa_warning_text="//android.widget.TextView[@resource-id='com.cureatr.messenger.dev:id/app_pin_hipaa_warning']"
+passcode_title="//android.widget.TextView[@resource-id='com.cureatr.messenger.dev:id/app_pin_title_label']"
 skipbutton="//android.widget.Button[@text='Skip this']"
 highlighted_pageindicator_page1="//android.widget.LinearLayout[1]/android.view.View[1]"
 highlighted_pageindicator_page2="//android.widget.LinearLayout[1]/android.view.View[2]"

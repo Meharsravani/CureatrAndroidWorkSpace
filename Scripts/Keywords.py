@@ -400,25 +400,31 @@ def SwipeRight(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Co
 
 def verifySignIn(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
 	try:
-		print "ok"
 		if Correct_Data=="Y":
 			element1 = driver.find_element_by_xpath("//android.widget.TextView[@resource-id='com.cureatr.messenger.dev:id/menu_settings']").is_displayed()
-			print"one"
-			print element1
 			if str(element1)=="True": 	
 				return "PASS", ""
 			else:
 				ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
 				return "FAIL", ""
-		else:
-			print"two"
-			element2 = driver.find_element_by_xpath("//android.widget.Button[@resource-id='com.cureatr.messenger.dev:id/account_forgot_password_button']").is_displayed()
-			return "PASS", ""
+		else: 
+			element3 = driver.find_element_by_xpath("//android.view.ViewGroup[1]/android.widget.TextView[1]").is_displayed()
+			if str(element3)=="True":
+				return "PASS", ""
+			else:
+				ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
+				return "FAIL", ""		
 	except Exception as err:
-		print "hii"
-		logger.info("Exception @ verifySignIn"+str(err))
-		ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
-		return "FAIL", ""
+		try:
+			element2 = driver.find_element_by_xpath("//android.widget.Button[@resource-id='com.cureatr.messenger.dev:id/account_forgot_password_button']").is_displayed()
+			if str(element2)=="True":
+				return "PASS", ""
+			else:
+				return "FAIL", ""
+		except Exception as err:
+			logger.info("Exception @ verifySignIn"+str(err))
+			ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
+			return "FAIL", ""
 
 def verifyErrorMsg(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
 	try:
