@@ -422,8 +422,8 @@ def UnLockScreen(browser, driver, target, data, subdirectory, TCID, TSID, DSID, 
 
 def ScrollTo(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
 	try:
-		element1=driver.find_element_by_xpath(getattr(Config, str(target)))
-		print element1
+		el = self.driver.find_element_by_xpath("//android.widget.GridView[@resource-id='com.android.documentsui:id/grid']")
+		self.driver.execute_script("mobile: scroll", {"direction": 'down', 'element': el})
 		#driver.execute_script("mobile: scroll", {"direction": "down"},element: element1.value.ELEMENT)
 		print "krishna"
 		return "PASS", ""
@@ -500,6 +500,35 @@ def verifyFirstTimeSignIn(browser, driver, target, data, subdirectory, TCID, TSI
 				return "FAIL", ""
 	except Exception as err:
 		logger.info("Exception @ verifyFirstTimeSignIn"+str(err))
+		ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
+		return "FAIL", ""
+
+
+def verifyTextContains(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
+	for i in range(6):
+		try:
+			element = driver.find_element_by_xpath(getattr(Config, str(target))).text
+			element = element.encode('ascii', 'ignore').decode('ascii')
+			if str(data).lower() in str(element).lower():
+				return "PASS", ""
+			else:
+				ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
+				return "FAIL", ""
+		except Exception as err:
+			if i>=5:
+				logger.info("Exception @ verifyTextContains"+str(err))
+				ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
+				return "FAIL", ""
+			else:
+				time.sleep(1)
+				continue	
+
+def back_Button(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
+	try:
+		driver.pressKeyCode(AndroidKeyCode.BACK);
+		return "PASS", ""
+	except Exception as err:
+		logger.info("Exception @ LockScreen"+str(err))
 		ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
 		return "FAIL", ""
 
@@ -1055,26 +1084,6 @@ def verifyTextcss(browser, driver, target, data, subdirectory, TCID, TSID, DSID,
 	except Exception as err:
 		logger.info("Exception @ verifyTextcss"+str(err))
 		return "FAIL", ""
-
-		
-def verifyTextContains(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
-	for i in range(6):
-		try:
-			element = driver.find_element_by_xpath(getattr(Config, str(target))).text
-			element = element.encode('ascii', 'ignore').decode('ascii')
-			if str(data).lower() in str(element).lower():
-				return "PASS", ""
-			else:
-				ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
-				return "FAIL", ""
-		except Exception as err:
-			if i>=5:
-				logger.info("Exception @ verifyTextContains"+str(err))
-				ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
-				return "FAIL", ""
-			else:
-				time.sleep(1)
-				continue
 
 def verifyOrgText(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
 	try:

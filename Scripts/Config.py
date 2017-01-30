@@ -161,6 +161,7 @@ helptext="//android.widget.LinearLayout[1]/android.widget.LinearLayout[1]/androi
 profileinstitution="//*[@resource-id='com.cureatr.messenger.dev:id/profile_institution']"
 profilespeciality="//*[@resource-id='com.cureatr.messenger.dev:id/profile_specialty']"
 profiletitle="//*[@resource-id='com.cureatr.messenger.dev:id/profile_title']"
+image_view_content="//android.widget.ImageView[@resource-id='com.cureatr.messenger.dev:id/image_view_content']"
 
 #***Institution screen>>signin screen>>dashboard screen>>userstatus screen>>editprofile screen***
 #same xpath #***Institution screen>>signin screen>>dashboard screen>>userstatus screen>>viewprofile screen***(userimage)
@@ -195,6 +196,7 @@ tekenewphototext="//android.widget.LinearLayout[2]/android.widget.RelativeLayout
 #***Institution screen>>signin screen>>dashboard screen>>events screen***
 eventsheader="//android.widget.FrameLayout[1]/android.view.ViewGroup[1]/android.widget.TextView[1]"
 noeventstext="//android.widget.TextView[@resource-id='com.cureatr.messenger.dev:id/emptyTitle']"
+noresultstext="//android.widget.TextView[@resource-id='com.cureatr.messenger.dev:id/emptyMessage']"
 anyeventstext="//android.widget.RelativeLayout[1]/android.widget.TextView[2]"
 
 #***Institution screen>>signin screen>>dashboard screen>>contacts screen***
