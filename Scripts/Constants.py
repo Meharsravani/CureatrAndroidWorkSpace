@@ -20,7 +20,7 @@ InPutFileDir="D:/CureatrPythonWorkSpace/InputFiles/Web/"
 TOSFileDir="D:/CureatrPythonWorkSpace/Others/TOS/"
 """
 
-HomePath="/Users/macmini/dev/cureatr_android/messenger-android"
+HomePath="/home/cureatr/dev/CureatrAndroidWorkSpace/"
 MacPath=""
 #UBUNTU
 LOG_FILE=HomePath+"applicationlogs/app.log"

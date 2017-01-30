@@ -296,8 +296,10 @@ def verifyWaterMarkVailability(browser, driver, target, data, subdirectory, TCID
 def verifyWaterMarkUnVailability(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
 	try:
 		element=driver.find_element_by_xpath(getattr(Config, str(target)))
-		FieldType=element.get_attribute("placeholder")
+		FieldType=element.get_attribute("text")
+		print FieldType
 		GetFieldValue=element.get_attribute("value")
+		print GetFieldValue
 		if data==FieldType+GetFieldValue:
 			ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
 			return "FAIL", ""
@@ -382,19 +384,51 @@ def Hidekeyboard(browser, driver, target, data, subdirectory, TCID, TSID, DSID, 
 def SwipeRight(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
 	try:
 		print "sravani"
-		element=driver.find_element_by_xpath(getattr(Config, str(target)))
-		elY = element.getLocation().getY()
-		print elY
-		elX = element.getLocation().getX()
-		print elX
-		elX1 = element.getLocation().getX()
-		print elX1
-		elY1 = element.getLocation().getY()
-		print elY1
-		driver.swipe(elX, elY, elX1, elY1, 200)
+		ele=driver.find_element_by_xpath(getattr(Config, str(target)))
+		driver.swipe(start_x=290, start_y=420, end_x=1070, end_y=430, duration=800)
 		return "PASS", ""
 	except Exception as err:
-		logger.info("Exception @ CloseWebApp"+str(err))
+		logger.info("Exception @ SwipeRight"+str(err))
+		ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
+		return "FAIL", ""
+
+def RunAppinbackground(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
+	try:
+		print "welcome"
+		driver.background_app(5)
+		return "PASS", ""
+	except Exception as err:
+		logger.info("Exception @ RunAppinbackground"+str(err))
+		ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
+		return "FAIL", ""
+
+def LockScreen(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
+	try:
+		driver.lock(2)
+		return "PASS", ""
+	except Exception as err:
+		logger.info("Exception @ LockScreen"+str(err))
+		ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
+		return "FAIL", ""
+
+def UnLockScreen(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
+	try:
+		driver.unlock(5)
+		return "PASS", ""
+	except Exception as err:
+		logger.info("Exception @ LockScreen"+str(err))
+		ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
+		return "FAIL", ""
+
+def ScrollTo(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user):
+	try:
+		element1=driver.find_element_by_xpath(getattr(Config, str(target)))
+		print element1
+		#driver.execute_script("mobile: scroll", {"direction": "down"},element: element1.value.ELEMENT)
+		print "krishna"
+		return "PASS", ""
+	except Exception as err:
+		logger.info("Exception @ ScrollTo"+str(err))
 		ScreenShot(browser, driver, target, data, subdirectory, TCID, TSID, DSID, Correct_Data, currentTestDataSheet, dataset, user)
 		return "FAIL", ""
 
